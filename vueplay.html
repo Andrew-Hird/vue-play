@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <style>
+    .fade-enter-active,
+    .fade-leave-active {
+      transition: opacity .5s
+    }
+
+    .fade-enter,
+    .fade-leave-active {
+      opacity: 0
+    }
+  </style>
+  <title></title>
+</head>
+
+<body>
+
+  <div id="app">
+    <h3>Example 1</h3>
+    <p>{{ message }}</p>
+  </div>
+
+  <div id="app-2">
+    <h3>Example 2</h3>
+    <span v-bind:title="message">
+    Hover your mouse over me for a few seconds to see my dynamically bound title!
+  </span>
+  </div>
+
+  <div id="app-3">
+    <h3>Example 3</h3>
+    <button v-on:click="show = !show">
+    Toggle
+  </button>
+    <transition name="fade">
+      <p v-if="show">hello</p>
+    </transition>
+  </div>
+
+  <div id="app-4">
+    <h3>Example 4</h3>
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+  </div>
+
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!'
+      }
+    })
+
+    var app2 = new Vue({
+      el: '#app-2',
+      data: {
+        message: 'You loaded this page on ' + new Date()
+      }
+    })
+
+    var app3 = new Vue({
+      el: '#app-3',
+      data: {
+        show: true
+      }
+    })
+
+    var app4 = new Vue({
+      el: '#app-4',
+      data: {
+        todos: [{
+          text: 'Learn JavaScript'
+        }, {
+          text: 'Learn Vue'
+        }, {
+          text: 'Build something awesome'
+        }]
+      }
+    })
+  </script>
+</body>
+
+</html>
