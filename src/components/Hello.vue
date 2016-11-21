@@ -20,15 +20,20 @@
     <!-- <p>{{ name }} is <strong>{{ status }}</strong>.</p> -->
 
     <div id="my_view">
-      <label for="name">Name:</label>
+      <label for="person">person:</label>
       <input type="text" v-model="name" id="name" name="name" />
-      <br>
-      <label for="name">Age:</label>
-      <input type="text" v-model="age" id="age" name="age" />
-      <br>
-      <label for="name">Status:</label>
-      <input type="text" v-model="status" id="status" name="status" />
-      <p>{{ name }} is {{ age }} years old and is {{ status }}.</p>
+      <p>{{ name }} is {{ age }} years old and is {{ status | capitalize }}.</p>
+      <h2>Friends:</h2>
+      <ul>
+        <li v-for="friend in friends"> {{ friend.name }}</li>
+      </ul>
+    </div>
+    <div>
+      Show items containing:
+     <input v-model="search" type="text" />
+     <ul>
+       <!-- <li v-for="friend in friends | filterBy search in 'name'"> {{ friend.name }} </li> -->
+     </ul>
     </div>
   </div>
 </template>
@@ -39,9 +44,15 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
+      message: 'hello',
       name: 'Cushla',
       age: 23,
-      status: 'awesome'
+      status: 'awesome',
+      friends: [
+        { name: 'Clyde', age: 21 },
+        { name: 'Georgina', age: 20 },
+        { name: 'Caitlin', age: 29 }
+      ]
 
     }
   }
